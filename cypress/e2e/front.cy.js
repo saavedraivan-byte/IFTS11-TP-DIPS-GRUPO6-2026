@@ -48,7 +48,6 @@ describe('Casos de prueba de FRONT', () => {
     
     pageMyOrders.validatePurchaseCorrectly()
 
-
   })
   it.only('Modificación en carrito de compra y visualización de la orden | Saavedra Iván', () => {
     cy.delateCartAPI(user.userID);
