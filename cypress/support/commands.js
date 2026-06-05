@@ -89,4 +89,18 @@ Cypress.Commands.add('validateBooksVisible', (bookName1, bookName2, bookName3) =
 })
 
 
+Cypress.Commands.add('postDeleteWishlistAPI', (userID, token) => {
+    cy.request({
+        method: 'DELETE',
+        url: `https://app.bookdbqa.online/api/Wishlist/${userID}`,
+        failOnStatusCode: false,  //Importante para que cypress no falle automaticamente ante un error 400 o 500
+        headers: {
+            accept: 'application/json',
+            'content-type': 'application/json',
+            authorization: token
+        },
+        body: ""   
+    })
+
+})
 
