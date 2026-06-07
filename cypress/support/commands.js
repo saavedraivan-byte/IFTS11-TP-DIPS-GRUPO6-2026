@@ -12,6 +12,7 @@ Cypress.Commands.add('login', (username, password) => {
 
 
 
+
 Cypress.Commands.add('completeForm', (name, addressLine1, addressLine2, pincode, state) => {
 
     pageCheckOut.typeUserName(name);
@@ -57,7 +58,7 @@ Cypress.Commands.add('postPurchaseAPI', (userID, token) => {
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',
-            authorization: token
+            authorization: token ? `Bearer ${token}` : ''
         },
         body: {
             "orderDetails": [
@@ -81,12 +82,15 @@ Cypress.Commands.add('postPurchaseAPI', (userID, token) => {
 
 
 
+
 Cypress.Commands.add('validateBooksVisible', (bookName1, bookName2, bookName3) => {
 
     pageShoppingCart.validateBookVisible(bookName1);
     pageShoppingCart.validateBookVisible(bookName2);
     pageShoppingCart.validateBookVisible(bookName3);
 })
+
+
 
 
 Cypress.Commands.add('postDeleteWishlistAPI', (userID, token) => {
@@ -97,10 +101,29 @@ Cypress.Commands.add('postDeleteWishlistAPI', (userID, token) => {
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',
-            authorization: token
+            authorization: token ? `Bearer ${token}` : ''
         },
-        body: ""   
+        body: ""
     })
 
 })
 
+
+
+Cypress.Commands.add("loginRequest", (username, password) => {
+    // Retornamos la petición para que Cypress sepa que debe esperar a que termine
+    return cy.request({
+        method: "POST",
+        url: "https://app.bookdbqa.online/api/login",
+        headers: {
+            accept: 'application/json',
+            'content-type': 'application/json'
+        },
+        body: {
+            username,
+            password
+        }
+    }).then((response) => {
+        return response.body.token;
+    })
+})    
