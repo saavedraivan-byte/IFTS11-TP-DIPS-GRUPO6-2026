@@ -26,7 +26,7 @@ Cypress.Commands.add('completeForm', (name, addressLine1, addressLine2, pincode,
 
 
 
-Cypress.Commands.add('delateCartAPI', (userID) => {
+Cypress.Commands.add('delateCartAPI', (userID, token) => {
 
     cy.request({
         method: 'DELETE',
@@ -34,7 +34,7 @@ Cypress.Commands.add('delateCartAPI', (userID) => {
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',
-            authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUEVEUEUiLCJzdWIiOiJVc2VyIiwianRpIjoiNTM2MWY3OTctYjU4Mi00YzExLWE2NWYtMGJiNWNkYWFiMzg2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsInVzZXJJZCI6IjEwMjEiLCJleHAiOjE3Nzk5OTI4MzIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzY0LyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzY0LyJ9.4BCd09s5WI9WJ3pKOkhuq1OemuxALbt-jKBg7XvIMxI',
+            authorization: token ? `Bearer ${token}` : '',// probar en token de eliminar'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUEVEUEUiLCJzdWIiOiJVc2VyIiwianRpIjoiNTM2MWY3OTctYjU4Mi00YzExLWE2NWYtMGJiNWNkYWFiMzg2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsInVzZXJJZCI6IjEwMjEiLCJleHAiOjE3Nzk5OTI4MzIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzY0LyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzY0LyJ9.4BCd09s5WI9WJ3pKOkhuq1OemuxALbt-jKBg7XvIMxI',
             body: ''
         },
     }).then((reponse) => {

@@ -21,7 +21,6 @@ describe('Casos de prueba de APIs', () => {
 
 
 
-
     
 
     it.only('API | Eliminar libro/s en wishlist exitosamente | Saavedra Iván', () => {
@@ -32,8 +31,6 @@ describe('Casos de prueba de APIs', () => {
             })
         })   
     })
-
-
 
     it.only('API | Error al eliminar libro/s de wishlist sin token | Saavedra Iván', () => {
         cy.loginRequest(user.username, user.password)
