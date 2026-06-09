@@ -109,3 +109,54 @@ describe('Casos de prueba de FRONT', () => {
 
 
 })
+describe('Validar consistencia entre catálogo y detalle', () => {
+
+    it('Validar consistencia de la información entre el catálogo y el detalle del libro | Joel Barbona', () => {
+
+        // Login
+        cy.login()
+
+        // Capturar datos del primer libro
+        cy.get('.book-card').first().within(() => {
+
+            cy.get('.book-title')
+                .invoke('text')
+                .as('tituloLibro')
+
+            cy.get('.book-author')
+                .invoke('text')
+                .as('autorLibro')
+
+            cy.get('.book-price')
+                .invoke('text')
+                .as('precioLibro')
+
+            cy.contains('View Details').click()
+
+        })
+
+        // Validar detalle
+
+        cy.get('@tituloLibro').then((titulo) => {
+            cy.get('.book-detail-title')
+                .should('contain', titulo.trim())
+        })
+
+        cy.get('@autorLibro').then((autor) => {
+            cy.get('.book-detail-author')
+                .should('contain', autor.trim())
+        })
+
+        cy.get('@precioLibro').then((precio) => {
+            cy.get('.book-detail-price')
+                .should('contain', precio.trim())
+        })
+
+        // Validar portada
+
+        cy.get('.book-detail-image')
+            .should('be.visible')
+
+    })
+
+})
