@@ -107,6 +107,7 @@ describe('Casos de prueba de FRONT', () => {
   })
  
 
+  
 
 })
 describe('Validar consistencia entre catálogo y detalle', () => {
