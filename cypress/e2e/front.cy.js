@@ -12,7 +12,7 @@ const pageCheckOut = require('../support/page_objects/pageCheckOut')
 import { pageBooks } from '../support/page_objects/pageBooks'
 
 describe('Casos de prueba de FRONT', () => {
-/*  it.only('Comprar carrito exitosamente y visualizar orden de compra', () => {
+    it.only('Comprar carrito exitosamente y visualizar orden de compra', () => {
     cy.delateCartAPI(user.userID);
 
     cy.visit(url.login)
@@ -24,7 +24,7 @@ describe('Casos de prueba de FRONT', () => {
     pageHome.bookVisible(books.bookName1);
     headerNav.validateCartQuantity("0");
 
-    pageHome.clickAddtocartButton();
+    pageHome.clickAddtocartButton("0");
 
     pageHome.confirmationItemAdded();
     headerNav.validateCartQuantity("1")
@@ -51,7 +51,7 @@ describe('Casos de prueba de FRONT', () => {
     pageMyOrders.validatePurchaseCorrectly()
 
   })
-*/
+
   it.only('Modificación de compra en carrito y visualización de la orden | Saavedra Iván', () => {
     cy.delateCartAPI(user.userID);
 
