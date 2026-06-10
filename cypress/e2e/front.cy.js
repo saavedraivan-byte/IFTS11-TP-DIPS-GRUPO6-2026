@@ -11,7 +11,7 @@ const pageCheckOut = require('../support/page_objects/pageCheckOut')
 import { pageBooks } from '../support/page_objects/pageBooks'
 
 describe('Casos de prueba de FRONT', () => {
-  it('Comprar carrito exitosamente y visualizar orden de compra', () => {
+  it.only('Comprar carrito exitosamente y visualizar orden de compra', () => {
     cy.delateCartAPI(user.userID);
 
     cy.visit(url.login)
@@ -50,7 +50,8 @@ describe('Casos de prueba de FRONT', () => {
     pageMyOrders.validatePurchaseCorrectly()
 
   })
-  it('Modificación en carrito de compra y visualización de la orden | Saavedra Iván', () => {
+
+  it.only('Modificación en carrito de compra y visualización de la orden | Saavedra Iván', () => {
     cy.delateCartAPI(user.userID);
 
     cy.visit(url.login);
@@ -113,7 +114,7 @@ describe('Casos de prueba de FRONT', () => {
 })
 describe('Validar consistencia entre catálogo y detalle', () => {
 
-  it('Validar consistencia de la información entre el catálogo y el detalle del libro | Joel Barbona', () => {
+  it.only('Validar consistencia de la información entre el catálogo y el detalle del libro | Joel Barbona', () => {
 
     // Login
     cy.login()
