@@ -18,6 +18,6 @@ confirmationCartCleared(){
 validateBookVisible(bookName){
     cy.contains(bookName).should('be.visible')
 }
-
+//
 
 }module.exports = new pageMyOrders()

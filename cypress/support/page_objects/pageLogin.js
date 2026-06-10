@@ -9,5 +9,6 @@ typeUserPassword(password){
 clickButton(){
     cy.get('app-login button').contains('Login').click()
 }
+//
 
 }module.exports = new pageLogin();

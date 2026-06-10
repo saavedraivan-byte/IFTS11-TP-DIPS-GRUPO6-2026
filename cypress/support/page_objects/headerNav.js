@@ -6,6 +6,7 @@ validateCartQuantity(quantity){
 clickShoppingCartButton(){
     cy.get('mat-toolbar button').contains('shopping_cart').click()
 } 
+//
 
 
 }module.exports = new headerNav()

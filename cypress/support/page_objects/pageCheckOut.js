@@ -31,6 +31,7 @@ typeUserState(){
 clickPlaceOrderButton(){
     cy.get('button').contains('Place Order').click()
 }
+//
 
 
 }module.exports = new pageCheckOut()

@@ -9,6 +9,7 @@ clickAddtocartButton(posBook){
 confirmationItemAdded(){
     cy.contains('One Item added to cart').should('be.visible')
 }
+//
 firstBookTitle() {
         return cy.get('.book-title').first()
 }

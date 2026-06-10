@@ -12,6 +12,6 @@ clickDeleteButton(posBook){
 confirmationItemDelete(){
     cy.contains('Book removed from cart').should('be.visible')
 } 
-
+//
 
 }module.exports = new pageShoppingCart()
