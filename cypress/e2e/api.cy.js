@@ -40,6 +40,24 @@ describe('Casos de prueba de APIs', () => {
                 })
             })
     })
+    it.only('API | Vaciar carrito exitosamente | Joel Barbona', () => {
+
+    cy.delateCartAPI(user.userID).then((response) => {
+
+        expect(response.status).to.eq(200)
+
+    })
+
+    })
+    it.only('API | Error al vaciar carrito sin userID | Joel Barbona', () => {
+
+    cy.delateCartAPI('').then((response) => {
+
+        expect(response.status).to.eq(405)
+
+    })
+
+})
 
 })
 
