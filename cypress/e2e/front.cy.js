@@ -52,7 +52,7 @@ describe('Casos de prueba de FRONT', () => {
 
   })
 */
-  it.only('Modificación en carrito de compra y visualización de la orden | Saavedra Iván', () => {
+  it.only('Modificación de compra en carrito y visualización de la orden | Saavedra Iván', () => {
     cy.delateCartAPI(user.userID);
 
     cy.visit(url.login);
