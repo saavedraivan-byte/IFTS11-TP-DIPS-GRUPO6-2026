@@ -24,5 +24,36 @@ firstBookPrice() {
 openFirstBook() {
         cy.contains('View Details').first().click()
 }
+  firstBookTitleBookCart() {
+    return cy.get('app-book-card')
+      .first()
+      .find('.card-title strong')
+  }
+
+  firstBookPriceBookCart() {
+    return cy.get('app-book-card')
+      .first()
+      .find('p')
+      .first()
+  }
+
+  openFirstBookBookCart() {
+    return cy.get('.card-title a')
+      .first()
+      .click()
+  }
+firstBookAuthorBookCart() {
+  return cy.get('app-book-card')
+    .first()
+    .find('.card-text')
+    .eq(0)
+}
+
+firstBookCategoryBookCart() {
+  return cy.get('app-book-card')
+    .first()
+    .find('.card-text')
+    .eq(1)
+}
 
 }module.exports = new pageHome();
