@@ -97,7 +97,7 @@ describe('Casos de prueba de FRONT', () => {
 
     pageCheckOut.clickPlaceOrderButton();
 
-    //pageMyOrders.confirmationOrderPlaced();
+    //pageMyOrders.confirmationOrderPlaced(); a veces no logra encontrar el toast
     pageMyOrders.confirmationCartCleared();
     pageMyOrders.validateOrderCreation();
     cy.url().should('include', url.myorders);
