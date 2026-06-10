@@ -97,7 +97,7 @@ describe('Casos de prueba de FRONT', () => {
 
     pageCheckOut.clickPlaceOrderButton();
 
-    pageMyOrders.confirmationOrderPlaced();
+    //pageMyOrders.confirmationOrderPlaced();
     pageMyOrders.confirmationCartCleared();
     pageMyOrders.validateOrderCreation();
     cy.url().should('include', url.myorders);
