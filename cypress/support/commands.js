@@ -127,3 +127,16 @@ Cypress.Commands.add("loginRequest", (username, password) => {
         return response.body.token;
     })
 })    
+
+
+
+Cypress.Commands.add('getBookByIdAPI', (bookId, token) => {
+    return cy.request({
+        method: 'GET',
+        url: `https://app.bookdbqa.online/api/book/${bookId}`,
+        headers: {
+            'Authorization': token ? `Bearer ${token}` : ''
+        },
+        failOnStatusCode: false
+    });
+});
