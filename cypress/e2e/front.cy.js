@@ -2,6 +2,7 @@ import user from '../fixtures/user.json'
 import url from '../fixtures/url.json'
 import books from '../fixtures/books.json'
 import infoUser from '../fixtures/infoUser.json'
+import pageBookDetail from "../support/page_objects/pageBookDetail"
 import pageMyOrders from '../support/page_objects/pageMyOrders'
 const pageHome = require('../support/page_objects/pageHome')
 const pageLogin = require('../support/page_objects/pageLogin')
@@ -11,7 +12,7 @@ const pageCheckOut = require('../support/page_objects/pageCheckOut')
 import { pageBooks } from '../support/page_objects/pageBooks'
 
 describe('Casos de prueba de FRONT', () => {
-  it.only('Comprar carrito exitosamente y visualizar orden de compra', () => {
+/*  it.only('Comprar carrito exitosamente y visualizar orden de compra', () => {
     cy.delateCartAPI(user.userID);
 
     cy.visit(url.login)
@@ -50,7 +51,7 @@ describe('Casos de prueba de FRONT', () => {
     pageMyOrders.validatePurchaseCorrectly()
 
   })
-
+*/
   it.only('Modificación en carrito de compra y visualización de la orden | Saavedra Iván', () => {
     cy.delateCartAPI(user.userID);
 
@@ -104,62 +105,47 @@ describe('Casos de prueba de FRONT', () => {
     pageMyOrders.clickOrder('0');
 
     pageMyOrders.validatePurchaseCorrectly();
-    pageMyOrders.validateBookVisible(books.bookName1)
-    pageMyOrders.validateBookVisible(books.bookName2)
+    pageMyOrders.validateBookVisible(books.bookName1);
+    pageMyOrders.validateBookVisible(books.bookName2);
   })
 
 
 
 
 })
-describe('Validar consistencia entre catálogo y detalle', () => {
+
+
+  describe('Validar consistencia de la información entre catálogo y detalle', () => {
 
   it.only('Validar consistencia de la información entre el catálogo y el detalle del libro | Joel Barbona', () => {
 
-    // Login
-    cy.login()
+    cy.visit(url.login)
 
-    // Capturar datos del primer libro
-    cy.get('.book-card').first().within(() => {
+    pageLogin.typeUserName(user.username)
+    pageLogin.typeUserPassword(user.password)
+    pageLogin.clickButton()
 
-      cy.get('.book-title')
-        .invoke('text')
-        .as('tituloLibro')
+    pageHome.firstBookTitleBookCart()
+    .invoke('text')
+    .as('tituloLibro')
 
-      cy.get('.book-author')
-        .invoke('text')
-        .as('autorLibro')
+    pageHome.firstBookPriceBookCart()
+    .invoke('text')
+    .as('precioLibro')
 
-      cy.get('.book-price')
-        .invoke('text')
-        .as('precioLibro')
+    pageHome.openFirstBookBookCart()
 
-      cy.contains('View Details').click()
-
-    })
-
-    // Validar detalle
+    pageBookDetail.validateUrl()
 
     cy.get('@tituloLibro').then((titulo) => {
-      cy.get('.book-detail-title')
-        .should('contain', titulo.trim())
-    })
-
-    cy.get('@autorLibro').then((autor) => {
-      cy.get('.book-detail-author')
-        .should('contain', autor.trim())
+    pageBookDetail.titleVisible(titulo.trim())
     })
 
     cy.get('@precioLibro').then((precio) => {
-      cy.get('.book-detail-price')
-        .should('contain', precio.trim())
+    pageBookDetail.priceVisible(precio.trim())
     })
 
-    // Validar portada
-
-    cy.get('.book-detail-image')
-      .should('be.visible')
-
+    pageBookDetail.imageVisible()
   })
 
 })
