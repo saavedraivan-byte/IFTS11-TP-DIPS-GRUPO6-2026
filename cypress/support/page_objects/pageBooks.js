@@ -17,3 +17,4 @@ class PageBooks {
 
 // Exportarlo para que lo hereden otros archivos
 export const pageBooks = new PageBooks();
+//
